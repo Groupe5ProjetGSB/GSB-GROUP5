@@ -42,32 +42,32 @@ public class DaoVisiteur {
 //        return unClient;
 //    }
 
-    /**
-     * lire tous les enregistrements de la table CLIENT
-     *
-     * @return une collection d'instances de la classe Client
-     * @throws SQLException
-     */
-    public static List<Visiteur> selectAll() throws SQLException {
-        List<Visiteur> lesVisiteur = new ArrayList<Visiteur>();
-        Visiteur unVisiteur = null;
-        ResultSet rs;
-        PreparedStatement pstmt;
-        Jdbc jdbc = Jdbc.getInstance();
-        // préparer la requête
-        String requete = "SELECT * FROM VISITEUR";
-        pstmt = jdbc.getConnexion().prepareStatement(requete);
-        rs = pstmt.executeQuery();
-        while (rs.next()) {
-            int id = rs.getInt("ID");
-            String rue = rs.getString("RUE");
-            String cdp = rs.getString("CDP");
-            String ville = rs.getString("VILLE");
-            unVisiteur = new Visiteur(id, rue, cdp, ville);
-            lesVisiteur.add(unVisiteur);
-        }
-        return lesVisiteur;
-    }
+//    /**
+//     * lire tous les enregistrements de la table CLIENT
+//     *
+//     * @return une collection d'instances de la classe Client
+//     * @throws SQLException
+//     */
+//   /* public static List<Visiteur> selectAll() throws SQLException {
+//        List<Visiteur> lesVisiteur = new ArrayList<Visiteur>();
+//        Visiteur unVisiteur = null;
+//        ResultSet rs;
+//        PreparedStatement pstmt;
+//        Jdbc jdbc = Jdbc.getInstance();
+//         préparer la requête
+//        String requete = "SELECT * FROM VISITEUR";
+//        pstmt = jdbc.getConnexion().prepareStatement(requete);
+//        rs = pstmt.executeQuery();
+//        while (rs.next()) {
+//            int id = rs.getInt("ID");
+//            String rue = rs.getString("RUE");
+//            String cdp = rs.getString("CDP");
+//            String ville = rs.getString("VILLE");
+//            unVisiteur = new Visiteur(id, rue, cdp, ville);
+//            lesVisiteur.add(unVisiteur);
+//        }
+//        return lesVisiteur;
+//    }
 
     /**
      * Extrait un enregistrement du "ResultSet" issu de la table CLIENT
