@@ -17,14 +17,21 @@ public class Labo {
 
     private String chefVenteLabo;
 
+    public Labo(String codeLabo, String nomLabo, String chefVenteLabo) {
+        this.codeLabo = codeLabo;
+        this.nomLabo = nomLabo;
+        this.chefVenteLabo = chefVenteLabo;
+    }
+
     public Labo(String nomLabo, String chefVenteLabo) {
         this.nomLabo = nomLabo;
         this.chefVenteLabo = chefVenteLabo;
     }
 
-    
-    
-    
+    public Labo(String codeLabo) {
+        this.codeLabo = codeLabo;
+    }
+
     public String getCodeLabo() {
         return codeLabo;
     }
@@ -49,6 +56,9 @@ public class Labo {
         this.chefVenteLabo = chefVenteLabo;
     }
 
-   
+    @Override
+    public String toString() {
+        return nomLabo;
+    }
 
 }

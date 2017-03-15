@@ -17,45 +17,43 @@ import modele.metier.Secteur;
  *
  * @author Dimitri
  */
-public class DaoLabo {
+public class DaoSecteur {
 
-    public static List<Labo> selectAll() throws SQLException {
-        List<Labo> lesLabo = new ArrayList<Labo>();
-        Labo unLabo = null;
+    public static List<Secteur> selectAll() throws SQLException {
+        List<Secteur> lesSecteur = new ArrayList<Secteur>();
+        Secteur unSecteur = null;
         ResultSet rs;
         PreparedStatement pstmt;
         Jdbc jdbc = Jdbc.getInstance();
 
         //Requête
-        String requete = "SELECT * FROM LABO";
+        String requete = "SELECT * FROM SECTEUR";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
         rs = pstmt.executeQuery();
         while (rs.next()) {
-            String codeLabo = rs.getString("LAB_CODE");
-            String nomLabo = rs.getString("LAB_NOM");
-            String chefVenteLabo = rs.getString("LAB_CHEFVENTE");
-            unLabo = new Labo(codeLabo, nomLabo, chefVenteLabo);
-            lesLabo.add(unLabo);
+            String codeSecteur = rs.getString("SEC_CODE");
+            String libelleSecteur = rs.getString("SEC_LIBELLE");
+            unSecteur = new Secteur(codeSecteur, libelleSecteur);
+            lesSecteur.add(unSecteur);
         }
-        return lesLabo;
+        return lesSecteur;
     }
 
-    public static Labo selectOne(String codeLabo) throws SQLException {
-        Labo unLabo = null;
+    public static Secteur selectOne(String codeSecteur) throws SQLException {
+        Secteur unSecteur = null;
         ResultSet rs;
         PreparedStatement pstmt;
         Jdbc jdbc = Jdbc.getInstance();
         // préparer la requête
-        String requete = "SELECT * FROM LABO WHERE LAB_CODE= ?";
+        String requete = "SELECT * FROM SECTEUR WHERE SEC_CODE= ?";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
-        pstmt.setString(1, codeLabo);
+        pstmt.setString(1, codeSecteur);
         rs = pstmt.executeQuery();
         if (rs.next()) {
-            String codeLab = rs.getString("LAB_CODE");
-            unLabo = new Labo(codeLab);
+            String leSecteur = rs.getString("SEC_CODE");
+            unSecteur = new Secteur(leSecteur);
         }
-        return unLabo;
+        return unSecteur;
 
     }
-
 }

@@ -14,11 +14,11 @@ public class Jdbc {
     private static Jdbc singleton = null;
     // Paramètre de la connexion
     private String piloteJdbc = "";
-    private String protocoleJdbc = "";
-    private String serveurBd = "";
-    private String nomBd = "";
-    private String loginSgbd = "";
-    private String mdpSgbd = "";
+    private String protocoleJdbc = "gsb@";
+    private String serveurBd = "gsb@//localhost:1521/xe";
+    private String nomBd = "gsb";
+    private String loginSgbd = "gsb";
+    private String mdpSgbd = "gsb";
     // Connexion
     private Connection connexion = null; // java.sql.Connection
 

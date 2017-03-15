@@ -11,28 +11,42 @@ package modele.metier;
  */
 public class Secteur {
 
-    private String sec_code;
-    private String sec_libelle;
+    private String codeSecteur;
+    private String libelleSecteur;
+
+    public Secteur() {
+        this.codeSecteur = codeSecteur;
+        this.libelleSecteur = libelleSecteur;
+    }
+
+    public Secteur(String sec_code) {
+        this.codeSecteur = sec_code;
+    }
 
     public String getSec_code() {
-        return sec_code;
+        return codeSecteur;
     }
 
     public void setSec_code(String sec_code) {
-        this.sec_code = sec_code;
+        this.codeSecteur = sec_code;
     }
 
     public String getSec_libelle() {
-        return sec_libelle;
+        return libelleSecteur;
     }
 
     public void setSec_libelle(String sec_libelle) {
-        this.sec_libelle = sec_libelle;
+        this.libelleSecteur = sec_libelle;
     }
 
     public Secteur(String sec_code, String sec_libelle) {
-        this.sec_code = sec_code;
-        this.sec_libelle = sec_libelle;
+        this.codeSecteur = sec_code;
+        this.libelleSecteur = sec_libelle;
+    }
+
+    @Override
+    public String toString() {
+        return libelleSecteur;
     }
 
 }

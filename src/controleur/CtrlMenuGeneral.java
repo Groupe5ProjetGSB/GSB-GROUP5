@@ -18,11 +18,10 @@ import vue.VueMenuGeneral;
  */
 public class CtrlMenuGeneral implements WindowListener, ActionListener {
 
-      private VueMenuGeneral vue;         // LA VUE
-      private CtrlPrincipal ctrlPrincipal;
+    private VueMenuGeneral vue;         // LA VUE
+    private CtrlPrincipal ctrlPrincipal;
 
-      
-      //Methode de la classe
+    //Methode de la classe
     public VueMenuGeneral getVue() {
         return vue;
     }
@@ -38,63 +37,69 @@ public class CtrlMenuGeneral implements WindowListener, ActionListener {
     public void setCtrlPrincipal(CtrlPrincipal ctrlPrincipal) {
         this.ctrlPrincipal = ctrlPrincipal;
     }
-    
-    
-      //Controlleur de la classe
 
+    //Controlleur de la classe
     public CtrlMenuGeneral(VueMenuGeneral vue, CtrlPrincipal ctrlPrincipal) {
         this.vue = vue;
         this.ctrlPrincipal = ctrlPrincipal;
         // le contrôleur écoute la vue
         this.vue.addWindowListener(this);
         this.vue.getjButtonVisiteursMP().addActionListener(this);
+        this.vue.getjButtonMedicamentsMP().addActionListener(this);
+        this.vue.getjButtonPraticiensMP().addActionListener(this);
         // préparer l'état iniitial de la vue
         //afficherLesVisiteur();
     }
-    
-      
-      
+
+    private void quitter() {
+        ctrlPrincipal.quitterApplication();
+    }
+
     @Override
     public void windowOpened(WindowEvent we) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void windowClosing(WindowEvent we) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void windowClosed(WindowEvent we) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        quitter();
     }
 
     @Override
     public void windowIconified(WindowEvent we) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void windowDeiconified(WindowEvent we) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void windowActivated(WindowEvent we) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void windowDeactivated(WindowEvent we) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(vue.getjButtonVisiteursMP()) ){
-                ctrlPrincipal.afficherLesVisiteur();
-                System.out.println("ok");
-            }
+        if (e.getSource().equals(vue.getjButtonVisiteursMP())) {
+            ctrlPrincipal.afficherLesVisiteur();
+            System.out.println("ok");
+        } else if (e.getSource().equals(vue.getjButtonMedicamentsMP())) {
+            ctrlPrincipal.afficherMedicament();
+        } else if (e.getSource().equals(vue.getjButtonPraticiensMP())) {
+            ctrlPrincipal.afficherPracticien();
+        }
     }
-    
+
 }
